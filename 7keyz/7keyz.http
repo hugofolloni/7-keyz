@@ -1,0 +1,6 @@
+@_7keyz_HostAddress = http://localhost:5100
+
+GET {{_7keyz_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
