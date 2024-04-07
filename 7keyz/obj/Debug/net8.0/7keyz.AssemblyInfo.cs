@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("7keyz")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d77f66edb67463cd32f045dcce2ed51299195c45")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+503534c7d50417d944562e65ed34c6e7767f1253")]
 [assembly: System.Reflection.AssemblyProductAttribute("7keyz")]
 [assembly: System.Reflection.AssemblyTitleAttribute("7keyz")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
