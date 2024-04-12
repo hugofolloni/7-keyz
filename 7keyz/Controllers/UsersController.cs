@@ -14,10 +14,10 @@ namespace _7keyz.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-        private readonly UsersContext _context;
+        private readonly KeyzContext _context;
         private readonly IUsersService _usersService;
 
-        public UsersController(UsersContext context, IUsersService usersService)
+        public UsersController(KeyzContext context, IUsersService usersService)
         {
             _context = context;
             _usersService = usersService;

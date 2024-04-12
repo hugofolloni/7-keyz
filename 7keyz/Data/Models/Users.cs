@@ -8,5 +8,7 @@ public class Users
 
     public String Name { get; set; }
 
+    public virtual ICollection<ChatsUsers>? Chats { get; set; }
+
     public DateTime MemberSince { get; set; }
 }

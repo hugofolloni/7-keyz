@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace _7keyz.Migrations
 {
-    [DbContext(typeof(UsersContext))]
+    [DbContext(typeof(KeyzContext))]
     [Migration("20240406233102_Initial")]
     partial class Initial
     {
