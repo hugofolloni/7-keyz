@@ -1,6 +1,8 @@
 public class Chats {
     public int Id { get; set; }
 
+    public string Name { get; set; }
+
     public int StatusCode { get; set;}
 
     public DateTime ValidFrom { get; set; }
