@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace _7keyz.Controllers
 {
-    [Route("api/users")]
+    [Route("api/chats")]
     [ApiController]
     public class ChatsController : ControllerBase
     {
@@ -33,7 +33,32 @@ namespace _7keyz.Controllers
                 return NoContent();
             }
 
-            return chat;
-        }    
+            return Ok(chat);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<Chats>> CreateChat(CreateChatRequestDto request)
+        {
+            if(request.UsersIds == null || request.UsersIds.Count == 0 
+                || request.Name == null || request.Name == "") {
+                    return BadRequest("Parameters dont match requirements");
+            }
+
+            await _chatsService.CreateChatAsync(request);
+
+            return Created();
+        }
+
+        // [HttpGet("/userChats/{id}")]
+        // public async Task<ActionResult<IEnumerable<Chats>>> GetChatsByUserId(int id)
+        // {
+        //     var chats = await _chatsService.GetChatByIdAsync(id);
+
+        //     if (chats == null) {
+        //         return NoContent();
+        //     }
+
+        //     return chats;
+        // }
     } 
 }
