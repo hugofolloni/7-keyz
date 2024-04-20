@@ -55,5 +55,19 @@ namespace _7keyz.Services {
 
             return chat;
         }
+
+        public async Task<bool> InsertUsersAsync(int chatId, List<int> usersIds)
+        {
+            var chat = await GetChatByIdAsync(chatId);
+
+            if(chat == null) return false;
+
+            chat = InsertUsersInChat(chat, usersIds);
+
+             _context.Chats.Update(chat);
+            await _context.SaveChangesAsync();
+
+            return true;
+        }
     }
 }

@@ -49,6 +49,18 @@ namespace _7keyz.Controllers
             return CreatedAtAction(nameof(GetChatById), new { id = chat.Id }, chat);;
         }
 
+        [HttpPut("user/{chatId}")]
+        public async Task<ActionResult> AddUserToChat(int chatId, InsertUserRequestDto request) 
+        {
+            if (request == null || request.UsersIds == null) {
+                return BadRequest("Users ids must not be null");
+            }
+
+            await _chatsService.InsertUsersAsync(chatId, request.UsersIds);
+
+            return Ok();
+        }
+
         // [HttpGet("/userChats/{id}")]
         // public async Task<ActionResult<IEnumerable<Chats>>> GetChatsByUserId(int id)
         // {
