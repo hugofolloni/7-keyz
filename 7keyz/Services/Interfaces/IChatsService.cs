@@ -5,5 +5,7 @@ namespace _7keyz.Services.Interfaces {
         public Task<Chats?> GetChatByIdAsync(int id);
 
         public Task<Chats> CreateChatAsync(CreateChatRequestDto request);
+
+         public Chats InsertUsersInChat(Chats chats, List<int> users);
     }
 }

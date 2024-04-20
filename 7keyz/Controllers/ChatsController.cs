@@ -44,9 +44,9 @@ namespace _7keyz.Controllers
                     return BadRequest("Parameters dont match requirements");
             }
 
-            await _chatsService.CreateChatAsync(request);
+            var chat = await _chatsService.CreateChatAsync(request);
 
-            return Created();
+            return CreatedAtAction(nameof(GetChatById), new { id = chat.Id }, chat);;
         }
 
         // [HttpGet("/userChats/{id}")]
