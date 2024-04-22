@@ -1,14 +1,17 @@
 using Microsoft.EntityFrameworkCore;
 
-public partial class UsersContext : DbContext
+public partial class KeyzContext : DbContext
 {
     public DbSet<Users> Users { get; set; }
+    public DbSet<Messages> Messages { get; set; }
+    public DbSet<Chats> Chats { get; set; }
+    public DbSet<ChatsUsers> ChatsUsers { get; set; }
 
-    public UsersContext()
+    public KeyzContext()
     {
     }
 
-    public UsersContext(DbContextOptions<UsersContext> options)
+    public KeyzContext(DbContextOptions<KeyzContext> options)
         : base(options)
     {
     }

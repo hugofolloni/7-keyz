@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace _7keyz.Services {
     public class UsersService() : IUsersService {
-        private readonly UsersContext _context;
+        private readonly KeyzContext _context;
 
-        public UsersService(UsersContext context) : this()
+        public UsersService(KeyzContext context) : this()
         {
             _context = context;
         }

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace _7keyz.Migrations
 {
     [DbContext(typeof(KeyzContext))]
-    partial class UsersContextModelSnapshot : ModelSnapshot
+    [Migration("20240420122637_AddingReference")]
+    partial class AddingReference
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -118,21 +121,21 @@ namespace _7keyz.Migrations
 
             modelBuilder.Entity("ChatsUsers", b =>
                 {
-                    b.HasOne("Chats", "Chats")
+                    b.HasOne("Chats", "chats")
                         .WithMany("Users")
                         .HasForeignKey("chatsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Users", "Users")
+                    b.HasOne("Users", "users")
                         .WithMany("Chats")
                         .HasForeignKey("usersId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Chats");
+                    b.Navigation("chats");
 
-                    b.Navigation("Users");
+                    b.Navigation("users");
                 });
 
             modelBuilder.Entity("Messages", b =>

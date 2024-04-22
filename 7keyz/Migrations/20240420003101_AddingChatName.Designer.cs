@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace _7keyz.Migrations
 {
     [DbContext(typeof(KeyzContext))]
-    partial class UsersContextModelSnapshot : ModelSnapshot
+    [Migration("20240420003101_AddingChatName")]
+    partial class AddingChatName
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -55,17 +58,17 @@ namespace _7keyz.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("chatsId")
+                    b.Property<int?>("ChatsId")
                         .HasColumnType("int");
 
-                    b.Property<int>("usersId")
+                    b.Property<int?>("UsersId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("chatsId");
+                    b.HasIndex("ChatsId");
 
-                    b.HasIndex("usersId");
+                    b.HasIndex("UsersId");
 
                     b.ToTable("ChatsUsers");
                 });
@@ -118,21 +121,13 @@ namespace _7keyz.Migrations
 
             modelBuilder.Entity("ChatsUsers", b =>
                 {
-                    b.HasOne("Chats", "Chats")
+                    b.HasOne("Chats", null)
                         .WithMany("Users")
-                        .HasForeignKey("chatsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ChatsId");
 
-                    b.HasOne("Users", "Users")
+                    b.HasOne("Users", null)
                         .WithMany("Chats")
-                        .HasForeignKey("usersId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Chats");
-
-                    b.Navigation("Users");
+                        .HasForeignKey("UsersId");
                 });
 
             modelBuilder.Entity("Messages", b =>
